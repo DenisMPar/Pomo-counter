@@ -1,14 +1,14 @@
 import { Canvas } from '@react-three/fiber';
-import { Scene } from './components/Experience';
+import { Scene } from './components/Scene';
 import { Physics } from '@react-three/rapier';
 import { Suspense } from 'react';
 
 function App() {
   return (
-    <Canvas shadows camera={{ position: [4, 4, 4], fov: 30 }}>
+    <Canvas shadows camera={{ position: [15, 15, 15], fov: 30 }}>
       <color attach='background' args={['#ececec']} />
       <Suspense>
-        <Physics>
+        <Physics debug>
           <Scene />
         </Physics>
       </Suspense>
