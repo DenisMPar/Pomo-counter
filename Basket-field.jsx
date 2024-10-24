@@ -10,20 +10,22 @@ export function Model(props) {
   const { nodes, materials } = useGLTF('/Basket-field.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes['machine-body'].geometry} material={materials['Material.003']} position={[0.115, 7.498, -20.299]} scale={[5.521, 5.738, 5.521]} />
-      <mesh geometry={nodes['machine-hopper'].geometry} material={materials['Material.005']} position={[0.138, 19.711, -22.62]} scale={1.717} />
-      <mesh geometry={nodes['tapa-hopper'].geometry} material={nodes['tapa-hopper'].material} position={[0.152, 12.77, -22.62]} scale={[1.319, 0.048, 1.319]} />
-      <group position={[0.055, 28.381, -25.714]} rotation={[0, Math.PI / 2, 0]} scale={[0.243, 4.178, 6.323]}>
-        <mesh geometry={nodes.Cube.geometry} material={materials.Material} />
-        <mesh geometry={nodes.Cube_1.geometry} material={materials['Material.001']} />
+      <mesh geometry={nodes.floor.geometry} material={materials['Material.011']} position={[35.67, -0.36, 0]} rotation={[-Math.PI, 0, -Math.PI]} scale={[177.077, 1, 177.077]} />
+      <mesh geometry={nodes['Wall-teleport'].geometry} material={materials['Material.011']} position={[-106.001, 32.432, -3.869]} rotation={[0, 0, -Math.PI / 2]} scale={[115.105, 170.239, 182.458]} />
+      <mesh geometry={nodes['wall-lateral'].geometry} material={materials['Material.011']} position={[-3.945, 32.544, -176.565]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[115.105, 170.239, 182.458]} />
+      <mesh geometry={nodes['machine-body'].geometry} material={materials['Material.003']} position={[0.11, 7.593, -25.666]} scale={[10.107, 6.427, 10.107]} />
+      <mesh geometry={nodes['machine-hopper'].geometry} material={materials['Material.005']} position={[0.143, 21.273, -30.085]} scale={[2.521, 1.94, 2.465]} />
+      <mesh geometry={nodes['tapa-hopper'].geometry} material={materials['Material.005']} position={[0.346, 13.224, -28.288]} scale={[2.775, 0.076, 4.667]} />
+      <group position={[0.006, 4.844, 57.456]} scale={[8.803, 8.803, 14.304]}>
+        <mesh geometry={nodes.catapult_1.geometry} material={materials['Material.009']} />
+        <mesh geometry={nodes.catapult_2.geometry} material={materials['Material.010']} />
       </group>
-      <mesh geometry={nodes.net.geometry} material={nodes.net.material} position={[0.055, 22.576, -22.584]} rotation={[-Math.PI, 0, 0]} scale={-1.601} />
-      <mesh geometry={nodes.ring.geometry} material={materials['Material.004']} position={[0.055, 25.673, -22.584]} scale={[1.174, 1, 1.174]} />
-      <mesh geometry={nodes['ring-support'].geometry} material={materials['Material.004']} position={[0.055, 25.117, -25.175]} scale={[0.849, 0.616, 0.379]} />
-      <mesh geometry={nodes.Floor.geometry} material={materials['Material.002']} position={[0, 0, -5.385]} scale={-163.222} />
-      <mesh geometry={nodes['Throw-base'].geometry} material={nodes['Throw-base'].material} position={[0.006, 1.222, 63.593]} scale={[4.971, 1, 12.97]} />
-      <mesh geometry={nodes['cannon-base'].geometry} material={nodes['cannon-base'].material} position={[0.006, 7.597, 43.35]} rotation={[0.742, 0, 0]} scale={[4.806, 1, 9.772]} />
-      <mesh geometry={nodes['Can-case'].geometry} material={materials['Material.004']} position={[-0.352, 2.996, -0.446]} scale={[7.188, 4.28, 10.752]} />
+      <group position={[8.759, 2.832, 66.899]} rotation={[0, 0, -Math.PI / 2]} scale={[1.69, 0.664, 2.178]}>
+        <mesh geometry={nodes['tomato-sign_1'].geometry} material={materials['Material.007']} />
+        <mesh geometry={nodes['tomato-sign_2'].geometry} material={materials['Material.008']} />
+      </group>
+      <mesh geometry={nodes.rail.geometry} material={materials['Material.012']} position={[-58.083, -1.323, 2.305]} scale={[80.772, 0.584, 0.948]} />
+      <mesh geometry={nodes.pusher.geometry} material={materials['Material.012']} position={[20.417, 1.203, 1.922]} scale={[0.377, 1.528, 9.668]} />
     </group>
   )
 }

@@ -19,12 +19,16 @@ export function Aro(props) {
           scale={[0.243, 4.178, 6.323]}
         >
           <mesh
-            geometry={nodes.Cube_1.geometry}
-            material={materials.Material}
+            geometry={nodes['machine-body'].geometry}
+            material={materials['Material.003']}
+            position={[0.114, 7.593, -21.828]}
+            scale={[6.184, 6.427, 6.184]}
           />
           <mesh
-            geometry={nodes.Cube_2.geometry}
-            material={materials['Material.001']}
+            geometry={nodes['machine-hopper'].geometry}
+            material={materials['Material.005']}
+            position={[0.14, 21.273, -24.428]}
+            scale={1.923}
           />
         </group>
       </RigidBody>
