@@ -11,134 +11,10 @@ import { useMoveAndReset } from '../hooks/movement';
 import { Vector3 } from 'three';
 
 export function BasketField(props) {
-  const pusherRef = useRef();
-  const tapaHopperRef = useRef();
-  const [isReseting, setIsReseting] = useState(false);
-  const { move: MovePusher, reset: ResetPusher } = useMoveAndReset({
-    ref: pusherRef,
-    maxPosition: { x: -40 },
-    resetPosition: { x: 0 },
-    lockRotations: true,
-    lockTranslationsOnReset: false,
-  });
-  const { move: MoveTapaHopper, reset: ResetTapaHopper } = useMoveAndReset({
-    ref: tapaHopperRef,
-    maxPosition: { z: 2.6 },
-    resetPosition: { z: -0.3 },
-    lockRotations: true,
-  });
-  useEffect(() => {
-    tapaHopperRef.current.lockRotations(true);
-  }, []);
   const { nodes, materials } = useGLTF('/Basket-field.glb');
 
   return (
     <group {...props} dispose={null} scale={0.5}>
-      <RigidBody type='fixed' colliders='trimesh'>
-        <Box
-          onClick={() => MovePusher({ x: -180, y: 0, z: 0 })}
-          args={[3, 3, 3]}
-          position={[-30, 5, 30]}
-        >
-          <meshStandardMaterial color={'#a1a1a1'} />
-        </Box>
-      </RigidBody>
-      <RigidBody type='fixed' colliders='trimesh'>
-        <Box
-          onClick={() => ResetPusher({ x: 100, y: 0, z: 0 })}
-          args={[3, 3, 3]}
-          position={[-15, 5, 35]}
-        >
-          <meshStandardMaterial color={'#db6e6e'} />
-        </Box>
-      </RigidBody>
-      <RigidBody type='fixed' colliders='trimesh'>
-        <Box
-          onClick={() => MoveTapaHopper({ x: 0, y: 0, z: 800 })}
-          args={[3, 3, 3]}
-          position={[-20, 5, 30]}
-        >
-          <meshStandardMaterial color={'#111111'} />
-        </Box>
-      </RigidBody>
-      <RigidBody type='fixed' colliders='trimesh'>
-        <Box
-          onClick={() => ResetTapaHopper({ x: 0, y: 0, z: -60 })}
-          args={[3, 3, 3]}
-          position={[-20, 5, 35]}
-        >
-          <meshStandardMaterial color={'#00f1bd'} />
-        </Box>
-      </RigidBody>
-
-      <RigidBody type='fixed' colliders='trimesh'>
-        <mesh
-          geometry={nodes['machine-hopper'].geometry}
-          material={materials['Material.005']}
-          position={[0.143, 21.273, -30.085]}
-          scale={[2.521, 1.94, 2.465]}
-        />
-      </RigidBody>
-      <RigidBody type='fixed' colliders='trimesh'>
-        <mesh
-          geometry={nodes['machine-body'].geometry}
-          material={materials['Material.003']}
-          position={[0.11, 7.593, -25.666]}
-          scale={[10.107, 6.427, 10.107]}
-        />
-      </RigidBody>
-      <RigidBody
-        type='dynamic'
-        colliders='hull'
-        ref={tapaHopperRef}
-        gravityScale={10}
-      >
-        <mesh
-          geometry={nodes['tapa-hopper'].geometry}
-          material={materials['Material.005']}
-          position={[0.346, 13.224, -28.288]}
-          scale={[2.775, 0.076, 4.667]}
-        />
-      </RigidBody>
-
-      <RigidBody type='fixed' colliders='trimesh'>
-        <group position={[0.006, 4.844, 57.456]} scale={[8.803, 8.803, 14.304]}>
-          <mesh
-            geometry={nodes.catapult_1.geometry}
-            material={materials['Material.009']}
-          />
-          <mesh
-            geometry={nodes.catapult_2.geometry}
-            material={materials['Material.010']}
-          />
-        </group>
-      </RigidBody>
-
-      <mesh
-        geometry={nodes.rail.geometry}
-        material={materials['Material.012']}
-        position={[-58.083, -1.323, 2.305]}
-        scale={[80.772, 0.584, 0.948]}
-      />
-      <RigidBody
-        type='dynamic'
-        colliders='cuboid'
-        ref={pusherRef}
-        gravityScale={3}
-        onSleep={() => {
-          const position = pusherRef.current.translation();
-          if (position.x >= 0) {
-            props.handleAddTomatoBox();
-          }
-        }}
-      >
-        <mesh
-          geometry={nodes.pusher.geometry}
-          material={materials['Material.012']}
-          position={[20.417, 1.203, 1.922]}
-          scale={[0.377, 1.528, 9.668]}
-        />
-      </RigidBody>
       <RigidBody type='fixed' colliders='cuboid'>
         <mesh
           geometry={nodes.floor.geometry}
@@ -148,20 +24,6 @@ export function BasketField(props) {
           scale={[177.077, 1, 177.077]}
         />
       </RigidBody>
-      <group
-        position={[8.759, 2.832, 66.899]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[1.69, 0.664, 2.178]}
-      >
-        <mesh
-          geometry={nodes['tomato-sign_1'].geometry}
-          material={materials['Material.007']}
-        />
-        <mesh
-          geometry={nodes['tomato-sign_2'].geometry}
-          material={materials['Material.008']}
-        />
-      </group>
       <mesh
         geometry={nodes['Wall-teleport'].geometry}
         material={materials['Material.011']}
@@ -175,6 +37,12 @@ export function BasketField(props) {
         position={[-3.945, 32.544, -176.565]}
         rotation={[-Math.PI / 2, Math.PI / 2, 0]}
         scale={[115.105, 170.239, 182.458]}
+      />
+      <mesh
+        geometry={nodes.rail.geometry}
+        material={materials['Material.012']}
+        position={[-58.083, -1.323, 2.305]}
+        scale={[80.772, 0.584, 0.948]}
       />
     </group>
   );

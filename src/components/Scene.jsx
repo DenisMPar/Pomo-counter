@@ -16,6 +16,9 @@ import { TomatoBox } from '../models/tomato-box';
 import { GlowShaderMaterial } from './shaders';
 import { NumberModel } from '../models/number';
 import { Counter } from './conter';
+import { CansMachine } from '../models/cans-machine';
+import { Pusher } from '../models/pusher';
+import { TomatoCannon } from '../models/tomato-cannon';
 
 export const Scene = () => {
   const [balls, setBalls] = useState([{ id: 1, handle: 0 }]);
@@ -124,6 +127,7 @@ export const Scene = () => {
         rotation={[0, 0, degToRad(90)]}
         onIntersectionEnter={() => setTomatoBoxes([])}
       />
+
       <Plane
         args={[25, 15]}
         position={[-53.1, 4, 0.3]}
@@ -174,7 +178,7 @@ export const Scene = () => {
           <meshStandardMaterial color={'blue'} />
         </Box>
       </RigidBody>
-      <BasketField handleAddTomatoBox={handleAddTomatoBox} />
+      <BasketField />
       {cans.map((can, index) => (
         <RigidBody
           key={can.id}
@@ -189,6 +193,9 @@ export const Scene = () => {
         <TomatoBox closed={closedBox} />
       ))}
       <Counter />
+      <CansMachine />
+      <Pusher handleAddTomatoBox={handleAddTomatoBox} />
+      <TomatoCannon />
     </>
   );
 };

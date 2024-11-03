@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { degToRad } from 'three/src/math/MathUtils.js';
 
 export function Counter() {
-  const [count, setCount] = useState(8888);
+  const [count, setCount] = useState(0);
   const stringCount = String(count);
   const stringWithCeros =
     stringCount.length < 4 ? stringCount.padStart(4, '0') : stringCount;
