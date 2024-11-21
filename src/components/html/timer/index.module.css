@@ -1,7 +1,7 @@
 .timer_root {
   width: 100%;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-template-rows: auto;
   justify-items: center;
   align-items: center;
@@ -19,11 +19,16 @@
   gap: 10px;
 }
 .timer__buttons_container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+}
+.timer__reset_button {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 .counts {
   display: flex;

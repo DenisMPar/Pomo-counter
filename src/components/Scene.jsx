@@ -128,7 +128,7 @@ export const Scene = () => {
         onIntersectionEnter={() => setTomatoBoxes([])}
       />
 
-      <Plane
+      {/* <Plane
         args={[25, 15]}
         position={[-53.1, 4, 0.3]}
         rotation={[0, degToRad(90), 0]}
@@ -140,7 +140,7 @@ export const Scene = () => {
           vertexShader={GlowShaderMaterial.vertexShader}
           fragmentShader={GlowShaderMaterial.fragmentShader}
         />
-      </Plane>
+      </Plane> */}
 
       {balls.map((ball, index) => (
         <RigidBody

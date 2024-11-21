@@ -25,38 +25,40 @@ export function HtmlComponent() {
     }
   }
   return (
-    <div className={classes.root}>
-      <TimerComponent />
-      <div className={classes.setters}>
-        <div
-          className={
-            classes.setters__selects_container +
-            ' ' +
-            (showSelects ? '' : classes.hidden)
-          }
-        >
-          <TimerSelect
-            onChange={handleSelectTime}
-            label='pomodoro'
-            text='pomodoro'
-          />
-          <TimerSelect
-            onChange={handleSelectTime}
-            label='short-break'
-            text='Short break'
-          />
-          <TimerSelect
-            onChange={handleSelectTime}
-            label='long-break'
-            text='Long break'
-          />
+    <div className={`${classes.root} ${showSelects && classes.expanded}`}>
+      <div className={classes.setters__container}>
+        <TimerComponent />
+        <div className={classes.setters}>
+          <button
+            className={classes.setters__button}
+            onClick={() => setShowSelects(!showSelects)}
+          >
+            Settings
+          </button>
         </div>
-        <button
-          className={classes.setters__button}
-          onClick={() => setShowSelects(!showSelects)}
-        >
-          {showSelects ? 'Hide' : 'Show'} Selects
-        </button>
+      </div>
+      <div
+        className={
+          classes.setters__selects_container +
+          ' ' +
+          (showSelects ? '' : classes.hidden)
+        }
+      >
+        <TimerSelect
+          onChange={handleSelectTime}
+          label='pomodoro'
+          text='Pomodoro'
+        />
+        <TimerSelect
+          onChange={handleSelectTime}
+          label='short-break'
+          text='Short break'
+        />
+        <TimerSelect
+          onChange={handleSelectTime}
+          label='long-break'
+          text='Long break'
+        />
       </div>
     </div>
   );
